@@ -69,6 +69,7 @@
 #define PORTA_D12 PORT_B4 //PCINT4/ADC2
 #define PORTA_D13 PORT_B5 //PCINT5/RESET/ADC0/dW
 
+//Arduino mappings - PORTA_Dx - digital ports, PORTA_Ax - analog ports
 #elif defined(__AVR_ATmega32U4__)
 #define PORTA_D0 PORT_D2
 #define PORTA_D1 PORT_D3
@@ -166,15 +167,16 @@
 #define PINM(port, ddr, pin, portnum) pin
 #define PORTNM(port, ddr, pin, portnum) portnum
 
-#define SETP(arg) SETPM(arg)
-#define CLRP(arg) CLRPM(arg)
-#define INVP(arg) INVPM(arg)
-#define SETD(arg) SETDM(arg)
-#define CLRD(arg) CLRDM(arg)
-#define PINV(arg) PINVM(arg)
-#define PORT(arg) PORTM(arg)
-#define DDR(arg) DDRM(arg)
-#define PIN(arg) PINM(arg)
-#define PORTN(arg) PORTNM(arg)
+//Macro for work with pins
+#define SETP(arg) SETPM(arg) //set pin to 1
+#define CLRP(arg) CLRPM(arg) //set pin to 0
+#define INVP(arg) INVPM(arg) //invert pin
+#define SETD(arg) SETDM(arg) //set data direction to output
+#define CLRD(arg) CLRDM(arg) //set data direction to input
+#define PINV(arg) PINVM(arg) //read pin value
+#define PORT(arg) PORTM(arg) //get PORT (PORTA, PORTB, ...) from macro
+#define DDR(arg) DDRM(arg) //get DDR (DDRA, DDRB, ...) from macro
+#define PIN(arg) PINM(arg) //get PIN (PINA, PINB, ...) from macro
+#define PORTN(arg) PORTNM(arg) //get pin number (PA0, PB2, PC4, ...) from macro
 
 #endif /* PORTS_H_ */
